@@ -71,3 +71,31 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 769px) {
+  .App-header {
+    height: auto;
+    flex-direction: column;
+    padding-bottom: 15px;
+  }
+
+  .header_title {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .header_link_title {
+    padding: 5px 0;
+  }
+
+  .header_menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header_link {
+    display: flex;
+    justify-content: center;
+  }
+}
