@@ -37,7 +37,7 @@ function App() {
         </div>
         <hr />
         <footer className="App-footer">
-          <p className='footer_text'>Latest update: 2023/05/16
+          <p className='footer_text'>Latest update: 2023/05/23
            © 2023 Dai Nakai</p>
         </footer>
 
