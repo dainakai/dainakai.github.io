@@ -69,6 +69,18 @@
   align-items: center;
 }
 
+.contactmeimg {
+  width: 80%;
+  text-align: center;
+  /* height: 100%; */
+  margin: auto;
+  display: block;
+}
+
+.figcap {
+  text-align: center;
+}
+
 @media (max-width: 769px) {
   .App-header {
     height: auto;

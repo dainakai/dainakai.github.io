@@ -17,7 +17,7 @@ function App() {
           <nav className='header_nav'>
             <ul className='header_menu'>
               <li><NavLink to="/aboutme" className="header_link">About me</NavLink></li>
-              <li><NavLink to="/researches" className="header_link">Researches</NavLink></li>
+              <li><NavLink to="/researches" className="header_link">Research</NavLink></li>
               <li><NavLink to="/achievements" className="header_link">Achievements</NavLink></li>
               <li><NavLink to="/links" className="header_link">Links</NavLink></li>
               <li><NavLink to="/contactme" className="header_link">Contact me</NavLink></li>
@@ -37,7 +37,7 @@ function App() {
         </div>
         <hr />
         <footer className="App-footer">
-          <p className='footer_text'>Latest update: 2023/05/23
+          <p className='footer_text'>Latest update: 2023/06/14
            © 2023 Dai Nakai</p>
         </footer>
 
