@@ -15,6 +15,7 @@ export const Achievements = () => {
                     <li><b>Nakai, D.</b>, & Tanaka, Y., “Measurement of Nanoliter Droplets in a Microchannel Using Phase Retrieval Holography”, The 32nd International Symposium on Imaging, Sensing, and Optical Memory, C000607, Sapporo, Aug. 2022.</li>
                     <li><b>Nakai, D.</b>, & Tanaka, Y., “Effect of Depth-Position Displacement of Approaching Microdroplet Pairs on Holographic Patterns”, The International Workshop on Advanced Experimental Mechanics for Students and Young Researchers 2022, A050, Online, Nov. 2022.</li>
                     <li><b>Nakai, D.</b>, & Tanaka, Y., “Effect of Depth-Position Displacement of Approaching Microdroplet Pairs on Holographic Patterns”, The 11th International Conference on Multiphase Flow, #790, Kobe, Nov. 2022.</li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Holographic Collision Analysis of Microdroplets: Data Augmentation with OpenFOAM”, ASME-JSME-KSME Fluids Engineering Division 2023, #3-09-1-04, Osaka, Jul. 2023.</li>
                 </ul>
             <h3>Domestic Conference</h3>
                 <ul>
@@ -24,6 +25,7 @@ export const Achievements = () => {
                     <li><b>中井 大</b>, 田中 洋介, “インライン位相回復ホログラフィによるボールレンズの形状計測”, 日本実験力学会 2022年度年次講演会, 鳥取 鳥取大学, 2021/08. 発表日:2022年8月24日</li>
                     <li><b>中井 大</b>, 田中 洋介, “液滴衝突における2液滴間距離がホログラフィックパターンに与える影響”, 日本光学会年次学術講演会 Optics & Photonics Japan 2022, 栃木 宇都宮大学, 2022/11. 発表日:2022年11月13日</li>
                     <li><b>中井 大</b>, 田中 洋介, “機械学習を用いたマイクロ液滴近接検出”, 日本機械学会関西支部 第98期定時総会講演会, 京都 京都工芸繊維大学, 2023/03. 発表日:2023年3月16日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “Julia × GPU によるホログラフィック微粒子計測”, 日本実験力学会 光学的手法分科会研究会, つくば 産総研つくばセンター, 2023/07. 発表日:2023年7月4日</li>
                 </ul>
         </div>
     );
