@@ -1,6 +1,6 @@
 import './App.css';
 import SlideRoutes from 'react-slide-routes';
-import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import { Home } from './components/home';
 import { AboutMe } from './components/aboutme';
 import { Researches } from './components/researches';
