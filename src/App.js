@@ -93,7 +93,7 @@ function App() {
       </div>
         <footer className="App-footer">
           <p className='footer_text'>Latest update: {LAST_UPDATE}
-           © 2023 Dai Nakai</p>
+           © 2024 Dai Nakai</p>
         </footer>
     </div>
   );
