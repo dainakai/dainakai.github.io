@@ -1,0 +1,1046 @@
+# dai-page
+
+## Directory Structure
+
+- dai-page/
+  - public/
+    - favicon.ico (binary file)
+    - index.html
+    - logo512.png (binary file)
+    - 404.html
+    - img/
+      - home/
+        - topimage_2023_0614.jpg (binary file)
+    - newsItems/
+      - news0001.md
+      - news0005.md
+      - news0004.md
+      - news0003.md
+      - news0002.md
+    - manifest.json
+    - robots.txt
+    - logo192.png (binary file)
+  - src/
+    - reportWebVitals.js
+    - App.css
+    - index.js
+    - index.css
+    - components/
+      - links.js
+      - aboutme.js
+      - contactme.js
+      - NewsList.js
+      - home.js
+      - styles/
+        - NewsList.css
+        - achievements.css
+        - NewsItemBox.css
+        - NewsItem.css
+      - achievements.js
+      - researches.js
+      - NewsItem.js
+    - App.test.js
+    - lastUpdate.js
+    - setupTests.js
+    - data/
+      - newsData.js
+    - logo.svg
+    - App.js
+
+## File Contents
+
+### public/index.html
+
+```
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="京都工芸繊維大学大学院生 中井 大 のホームページです。"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>中井 大 (Dai Nakai) 京都工芸繊維大学大学院</title>
+    <meta name="google-site-verification" content="jWI5D8CFapV27ez5HYpfo2-Hiv9tifa-3CLtBjBK54E" />
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PPQLMKW3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-8PPQLMKW3D');
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+
+```
+
+### public/404.html
+
+```
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="京都工芸繊維大学大学院生 中井 大 のホームページです。"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>中井 大 (Dai Nakai) 京都工芸繊維大学大学院</title>
+    <meta name="google-site-verification" content="jWI5D8CFapV27ez5HYpfo2-Hiv9tifa-3CLtBjBK54E" />
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PPQLMKW3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-8PPQLMKW3D');
+    </script>
+    <script>
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // Copyright (c) 2016 Rafael Pedicini, licensed under MIT
+      // ----------------------------------------------------------------------
+      // This script checks to see if a redirect is present in the query string
+      // and converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function(l) {
+          if (l.search) {
+              var q = {};
+              l.search.slice(1).split('&').forEach(function(v) {
+                  var a = v.split('=');
+                  q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+              });
+              if (q.p !== undefined) {
+                  window.history.replaceState(null, null,
+                      l.pathname.slice(0, -1) + (q.p || '') +
+                      (q.q ? ('?' + q.q) : '') +
+                      l.hash
+                  );
+              }
+          }
+      }(window.location))
+    </script>    
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+
+```
+
+### public/newsItems/news0001.md
+
+```
+<!-- news0001.md -->
+<!-- ## 研究テーマ「ホログラフィック降水粒子観測システムを用いた乱流場における粒子併合促進効果の解明」（大気水圏科学分野）が日本学術振興会特別研究員DC1に採用されました。 -->
+<!-- 2023-09-27 -->
+
+```
+
+### public/newsItems/news0005.md
+
+```
+<!-- news0005.md -->
+<!-- 高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました -->
+<!-- 2023-12-14 -->
+「GPU搭載シングルボードコンピュータと２台のカメラによるリアルタイム位相回復ホログラフィ再生処理モジュールの開発」という題で発表しました。
+
+詳細はこちら
+
+https://sites.google.com/view/jchsip2023/
+```
+
+### public/newsItems/news0004.md
+
+```
+<!-- news0004.md -->
+<!-- Advanced Experimental Mechanics Vol.8に投稿した主著論文がJ-Stageで公開されました。 -->
+<!-- 2023-12-07 -->
+ホログラフィによる粒子計測では基本的には光の伝搬計算による３次元像再生を行い粒子座標を求めますが、光軸方向に距離を持たない近接した同径粒子組についてはホログラフィックパターンから直接粒子間距離を求めることができます。この研究では、二重露光ホログラフィ時代の結果を応用し、近接粒子組の理論式とその離散化による距離公式の導出、実験による公式の検証を行いました。
+
+詳細はこちら
+
+https://doi.org/10.11395/aem.8.0_33
+```
+
+### public/newsItems/news0003.md
+
+```
+<!-- news0003.md -->
+<!-- IWAEM23@龍谷大学梅田キャンパスに参加しました。 -->
+<!-- 2023-11-26 -->
+日本実験力学会主催のInternational Workshop on Advanced Experimental Mechanics for Students and Young Researchers 2023 (IWAEM’23)に参加しました。"Recognition of Approaching Droplet Holograms using Image Recognition Models" という題で発表し、Outstanding Oral Presentations Awardを頂きました。
+
+ワークショップHP
+
+https://jsem.jp/IWAEM23/index.html
+
+受賞者一覧ページ
+
+https://jsem.jp/IWAEM23/awards.html
+```
+
+### public/newsItems/news0002.md
+
+```
+<!-- news0002.md -->
+<!-- 気象学会秋季大会2023@仙台国際センターに参加しました。 -->
+<!-- 2023-10-26 -->
+博士後期課程からの研究では、ホログラフィによる乱流場における粒子併合現象の観測と解析を目指しています。このたび、仙台国際センターで開催された気象学会秋季大会2023に参加しました。
+
+詳細はこちら
+    
+https://www.metsoc.jp/meetings/2023a
+```
+
+### public/manifest.json
+
+```
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
+
+```
+
+### public/robots.txt
+
+```
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+```
+
+### src/reportWebVitals.js
+
+```
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+
+```
+
+### src/App.css
+
+```
+/* App.css */
+.App {
+  font-size: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.App-header {
+  background-color: #1f1f1f;
+  padding: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header_link_title {
+  color: inherit;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.header_title {
+  margin: 0;
+}
+
+.header_menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header_link {
+  color: #ccc;
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: color 0.3s;
+  font-size: 18px;
+}
+
+.header_link:hover {
+  color: white;
+}
+
+.header_active_link {
+  color: #61dafb;
+  border-bottom: 2px solid #61dafb;
+}
+
+.App-body {
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 200px);
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.App-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1f1f1f; 
+  color: white;
+}
+
+.contactmeimg {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: block;
+}
+
+.figcap {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ページ遷移のアニメーション */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+  
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+/* ハンバーガーメニュー */
+.hamburger_menu {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .App-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header_menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .header_menu li {
+    margin-bottom: 10px;
+  }
+
+  .hamburger_menu {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .hamburger_menu_line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .change .hamburger_menu_line:nth-child(1) {
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+
+  .change .hamburger_menu_line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .change .hamburger_menu_line:nth-child(3) {
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+  .header_menu.open {
+    display: flex;
+  }
+}
+```
+
+### src/index.js
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Router>
+    <App />
+  </Router>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+```
+
+### src/index.css
+
+```
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+```
+
+### src/components/links.js
+
+```
+export const Links = () => {
+    return (
+        <div className="links">
+            <h2 className='links_title'>Links</h2>
+            <h3>Researchmap</h3>
+            <a href="https://researchmap.jp/dainakai/" target="_blank" rel="noopener noreferrer">https://researchmap.jp/dainakai/</a>
+            <h3>ResearchGate</h3>
+            <a href="https://www.researchgate.net/profile/Dai-Nakai" target="_blank" rel="noopener noreferrer">https://www.researchgate.net/profile/Dai-Nakai</a>
+            <h3>ORCiD</h3>
+            <a href="https://orcid.org/0000-0002-6819-2825" target="_blank" rel="noopener noreferrer">https://orcid.org/0000-0002-6819-2825</a>
+            <h3>計測システム工学研究室</h3>
+            <a href="http://www.measlab.kit.ac.jp/" target="_blank" rel="noopener noreferrer">http://www.measlab.kit.ac.jp/</a>
+            <h3>京都工芸繊維大学 機械設計学専攻</h3>
+            <a href="http://www.mech.kit.ac.jp/" target="_blank" rel="noopener noreferrer">http://www.mech.kit.ac.jp/</a>
+            <h3>京都工芸繊維大学</h3>
+            <a href="http://www.kit.ac.jp/" target="_blank" rel="noopener noreferrer">http://www.kit.ac.jp/</a>
+        </div>
+    );
+}
+```
+
+### src/components/aboutme.js
+
+```
+export const AboutMe = () => {
+    return (
+        <div className="aboutme">
+        <h2 className='aboutme_title'>About me</h2>
+        <p className='aboutme_text'></p>
+        <h3 className='aboutme_title'>Education</h3>
+        <p className='aboutme_text'>
+            <ur>
+                <li>2018年3月 京都市立堀川高等学校 卒業</li>
+                <li>2018年4月 京都工芸繊維大学 機械工学課程 入学</li>
+                <li>2022年3月 京都工芸繊維大学 機械工学課程 卒業</li>
+                <li>2022年4月 京都工芸繊維大学 機械設計学専攻 入学</li>
+                <li>2024年3月 京都工芸繊維大学 機械設計学専攻 修了予定</li>
+            </ur>
+        </p>
+        <h3 className='aboutme_title'>Academic Memberships</h3>
+        <p className='aboutme_text'>
+            <ur>
+                <li>日本機械学会 The Japanese Society for Mechanical Engineers <a href="https://www.jsme.or.jp/">https://www.jsme.or.jp/</a> </li>
+                <li>日本混相流学会 The Japanese Society for Multiphase Flow <a href="http://www.jsmf.gr.jp/">http://www.jsmf.gr.jp/</a></li>
+                <li>日本気象学会 The Meteorological Society of Japan <a href="https://www.metsoc.jp/">https://www.metsoc.jp/</a></li>
+            </ur>
+        </p>
+
+        </div>
+    );
+}
+```
+
+### src/components/contactme.js
+
+```
+export const ContactMe = () => {
+    return (
+        <div className="contactme">
+            <h2 className='contactme_title'>Contact</h2>
+            <p className='contactme_text'>If you want to contact me, please email at <a href="mailto:m2623119@edu.kit.ac.jp">m2623119 at edu.kit.ac.jp</a> (please replace 'at' with '@')</p>
+            {/* ./home/topimage_2023_0614.jpg をページサイズの90%で表示。画像下部にコメント */}
+            <figure className="contactmeimg">
+                <img src="/img/home/topimage_2023_0614.jpg" alt="topimage" width="90%" />
+                <figcaption className="figcap">先日の台風3号一過の翌日の鴨川です。</figcaption>
+            </figure>
+        </div>
+    );
+}
+```
+
+### src/components/NewsList.js
+
+```
+// components/NewsList.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Grid, Typography } from '@mui/material';
+import { newsData } from '../data/newsData';
+import './styles/NewsList.css';
+
+export const NewsList = () => {
+  return (
+    <div className="news-list-container">
+      <Typography variant="h4" component="h2" gutterBottom>
+        News List
+      </Typography>
+      <Grid container spacing={3} className="news-list-contents">
+        {newsData.map(item => (
+          <Grid item xs={12} key={item.id} component={Link} to={`/news/${item.id}`} className="news-list-item" sx={{m:1}}>
+            <Typography variant="h6">{item.title}</Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {item.date}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+};
+```
+
+### src/components/home.js
+
+```
+// components/home.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Typography } from '@mui/material';
+import { newsData } from '../data/newsData';
+import { Grid } from '@mui/material';
+
+export const Home = () => {
+  let recentNews = newsData.slice(0, 6);
+  return (
+    <div className="home">
+      <Typography variant="h4" gutterBottom>Welcome!</Typography>
+      <Typography variant="body1" paragraph>
+        Hi. My name is Dai Nakai. I am a graduate student at Kyoto Institute of Technology.
+      </Typography>
+      <Typography variant="body1" paragraph>
+        中井 大のウェブページへようこそ。京都工芸繊維大学大学院 機械設計学専攻 計測システム工学研究室に所属しています。
+      </Typography>
+      <div className='news_feed'>
+        <Typography variant="h5" gutterBottom>News!</Typography>
+        {/* {recentNews.map((item, index) => (
+          <NewsItemBox key={index} newsItem={item} />
+        ))} */}
+              <Grid container spacing={3} className="news-list-contents">
+        {recentNews.map(item => (
+          <Grid item xs={12} key='' component={Link} to={`/news/${item.id}`} className='news-list-item' sx={{m:1}}>
+            {/* <div className="news-list-item"> */}
+              <Typography variant="h6" >
+                {item.title}
+              </Typography>
+              <Typography variant="subtitle2" color="textSecondary">
+                {item.date}
+              </Typography>
+            {/* </div> */}
+          </Grid>
+        ))}
+      </Grid>
+        <div className="view_all" style={{ textAlign: 'center' }}>
+          <Button component={Link} to="/news" variant="text">
+            View all
+          </Button>
+        </div>
+      </div>
+    </div>
+
+  );
+}
+```
+
+### src/components/styles/NewsList.css
+
+```
+/* components/styles/NewsList.css */
+.news-list-contents {
+  padding: 30px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.news-list-container h2 {
+  margin-bottom: 10px;
+}
+
+.news-list-item {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  color: #333;
+  text-decoration: none;
+}
+
+.news-list-item:hover {
+  background-color: #eee;
+}
+```
+
+### src/components/styles/achievements.css
+
+```
+ul {
+    list-style-type: numbers;
+}
+```
+
+### src/components/styles/NewsItemBox.css
+
+```
+/* components/styles/NewsItemBox.css */
+.news-item-box {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .news-item-box:hover {
+    background-color: #f0f0f0;
+  }
+```
+
+### src/components/styles/NewsItem.css
+
+```
+.news-item-container {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+```
+
+### src/components/achievements.js
+
+```
+import './styles/achievements.css'
+
+export const Achievements = () => {
+    return (
+        <div className="achievements">
+            <h2 className='achievements_title'>Achievements</h2>
+            <h3>Publication</h3>
+                <ul>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “In-Line Digital Holographic Reconstruction by Using GPU Programming with Python”, Advanced Experimental Mechanics, 7, pp.169-173, (2022). <a href='https://doi.org/10.11395/aem.7.0_169' target="_blank" rel="noopener noreferrer">https://doi.org/10.11395/aem.7.0_169</a> </li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Spatial Frequency Analysis of Holograms of Two Droplets in Close Proximity”, Advanced Experimental Mechanics, 8, pp.33-38, (2023). <a href='https://doi.org/10.11395/aem.8.0_33' target="_blank" rel="noopener noreferrer">https://doi.org/10.11395/aem.8.0_33</a></li>
+                    <li>Tanaka, Y., & <b>Nakai, D.</b>, “Particle Size Measurement Using a Phase Retrieval Holography System with a GPU-Equipped SBC”, KONA Powder and Particle Journal, 2024002. (Advanced online publication) <a href='https://doi.org/10.14356/kona.2024002' target="_blank" rel="noopener noreferrer">https://doi.org/10.14356/kona.2024002</a></li>
+                </ul>
+            <h3>International Conference (Presenting Author)</h3>
+                <ul>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Study on a Holographic Pattern and its Spectral Distribution Formed by Two Approaching Spheres”, The 32nd International Symposium on Imaging, Sensing, and Optical Memory, C000607, Sapporo, Aug. 2022.</li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Effect of Depth-Position Displacement of Approaching Microdroplet Pairs on Holographic Patterns”, International Workshop on Advanced Experimental Mechanics for Students and Young Researchers 2022, A050, Online, Nov. 2022.</li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Measurement of Nanoliter Droplets in a Microchannel Using Phase Retrieval Holography”, The 11th International Conference on Multiphase Flow, #790, Kobe, Nov. 2022.</li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Holographic Collision Analysis of Microdroplets: Data Augmentation with OpenFOAM”, ASME-JSME-KSME Fluids Engineering Division 2023, #3-09-1-04, Osaka, Jul. 2023.</li>
+                    <li><b>Nakai, D.</b>, & Tanaka, Y., “Recognition of Approaching Droplet Holograms using Image Recognition Models”, International Workshop on Advanced Experimental Mechanics for Students and Young Researchers 2023, A042, Osaka, Nov. 2023.</li>
+                </ul>
+            <h3>Domestic Conference (Presenting Author)</h3>
+                <ul>
+                    <li><b>中井 大</b>, 田中 洋介, 村田 滋, “ディジタルホログラフィによる空間内微小液滴の衝突検知と推論プロセスの可視化”, 第49回可視化情報シンポジウム, 088, オンライン, 2020/09. 発表日:2021年9月11日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “機械学習に基づく時系列ホログラムの微小液滴衝突検知”, 日本機械学会 関西学生会2021年度学生員卒業研究発表講演会, SS3-(13)-3, 2022/3,（オンライン口頭発表）発表日:2022年3月15日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “微小液滴ホログラムのためのCNNベース衝突検知モデルの評価”, 可視化情報学会 第50回可視化情報シンポジウム, 東京 工学院大学, 2021/8. 発表日:2022年8月8日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “インライン位相回復ホログラフィによるボールレンズの形状計測”, 日本実験力学会 2022年度年次講演会, 鳥取 鳥取大学, 2021/08. 発表日:2022年8月24日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “液滴衝突における2液滴間距離がホログラフィックパターンに与える影響”, 日本光学会年次学術講演会 Optics & Photonics Japan 2022, 栃木 宇都宮大学, 2022/11. 発表日:2022年11月13日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “機械学習を用いたマイクロ液滴近接検出”, 日本機械学会関西支部 第98期定時総会講演会, 京都 京都工芸繊維大学, 2023/03. 発表日:2023年3月16日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “Julia × GPU によるホログラフィック微粒子計測”, 日本実験力学会 光学的手法分科会研究会, つくば 産総研つくばセンター, 2023/07. 発表日:2023年7月4日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “奥行方向距離を持つ近接液滴組のホログラフィックパターンとそのスペクトル分布に関する実験的研究”, 日本実験力学会 2023年度年次講演会, 和歌山 和歌山城ホール, 2023/08. 発表日:2023年8月29日</li>
+                    <li><b>中井 大</b>, 田中 洋介, “GPU搭載シングルボードコンピュータと２台のカメラによるリアルタイム位相回復ホログラフィ再生処理モジュールの開発”, 高速度イメージングとフォトニクスに関する総合シンポジウム2023, 東大阪 近畿大学, 2023/12. 発表日:2023年12月14日</li>
+                </ul>
+        </div>
+    );
+}
+```
+
+### src/components/researches.js
+
+```
+export const Researches = () => {
+    return (
+        <div className="researches">
+            <h2 className='researches_title'>Research</h2>
+                <h3>Digital holography  （ディジタルホログラフィ）</h3>
+                    <p className='researches_text'>
+                        ホログラフィは、観測したい物体を通過して記録された光の干渉の様子から、物体の３次元情報を再生する技術です。記録された光場をホログラムと呼び、カメラ（イメージセンサ）を用いてホログラムを記録し３次元情報を再生する手法を特にディジタルホログラフィと呼びます。
+                    </p>
+                <h3>Cloud microphysics  （雲の微物理）</h3>
+                    <p className='researches_text'>
+                        雲の微物理について
+
+                    </p>
+                <h3>Machine learning    （機械学習）</h3>
+                    <p className='researches_text'>
+                        機械学習について
+
+                    </p>
+        </div>
+    );
+}
+```
+
+### src/components/NewsItem.js
+
+```
+// components/NewsItem.js
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Paper, Typography } from '@mui/material';
+import { newsData } from '../data/newsData';
+import './styles/NewsItem.css';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+export const NewsItem = ({ newsItem }) => {
+  const { id } = useParams();
+  const [content, setMarkdown] = useState('');
+  const item = newsItem || (id && newsData.find(item => item.id === id));
+
+  useEffect(() => {
+    if (item) {
+      fetch(`/newsItems/${item.contentFile}`)
+        .then(response => response.text())
+        .then(markdown => setMarkdown(markdown))
+        .catch(error => console.error('Error fetching markdown file:', error));
+    }
+  }, [item]);
+
+  if (!item) {
+    return <Typography variant="h4">News item not found</Typography>;
+  }
+
+
+  return (
+    <Paper elevation={5} className="news-item-container">
+      <Typography variant="h6" component="h3" gutterBottom>
+        {item.title}
+      </Typography>
+      <Typography variant="subtitle2" color="textSecondary" gutterBottom>
+        {item.date}
+      </Typography>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        skipHtml={true}
+        components={{
+          a: ({ node, ...props }) => (
+            <a
+              {...props}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </Paper>
+  );
+};
+```
+
+### src/App.test.js
+
+```
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+```
+
+### src/lastUpdate.js
+
+```
+export const LAST_UPDATE = '2024/01/18';
+```
+
+### src/setupTests.js
+
+```
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+
+```
+
+### src/data/newsData.js
+
+```
+// data/newsData.js
+export const newsData = [
+    {
+      id: '0005',
+      date: '2023-12-14',
+      title: '高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました',
+      contentFile: 'news0005.md',
+    },
+    {
+      id: '0004',
+      date: '2023-12-07',
+      title: 'Advanced Experimental Mechanics Vol.8に投稿した主著論文がJ-Stageで公開されました。',
+      contentFile: 'news0004.md',
+    },
+    {
+      id: '0003',
+      date: '2023-11-26',
+      title: 'IWAEM23@龍谷大学梅田キャンパスに参加しました。',
+      contentFile: 'news0003.md',
+    },
+    {
+      id: '0002',
+      date: '2023-10-26',
+      title: '気象学会秋季大会2023@仙台国際センターに参加しました。',
+      contentFile: 'news0002.md',
+    },
+    {
+      id: '0001',
+      date: '2023-09-27',
+      title: '研究テーマ「ホログラフィック降水粒子観測システムを用いた乱流場における粒子併合促進効果の解明」（大気水圏科学分野）が日本学術振興会特別研究員DC1に採用されました。',
+      contentFile: 'news0001.md',
+    },
+  ];
+```
+
+### src/logo.svg
+
+```
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3"><g fill="#61DAFB"><path d="M666.3 296.5c0-32.5-40.7-63.3-103.1-82.4 14.4-63.6 8-114.2-20.2-130.4-6.5-3.8-14.1-5.6-22.4-5.6v22.3c4.6 0 8.3.9 11.4 2.6 13.6 7.8 19.5 37.5 14.9 75.7-1.1 9.4-2.9 19.3-5.1 29.4-19.6-4.8-41-8.5-63.5-10.9-13.5-18.5-27.5-35.3-41.6-50 32.6-30.3 63.2-46.9 84-46.9V78c-27.5 0-63.5 19.6-99.9 53.6-36.4-33.8-72.4-53.2-99.9-53.2v22.3c20.7 0 51.4 16.5 84 46.6-14 14.7-28 31.4-41.3 49.9-22.6 2.4-44 6.1-63.6 11-2.3-10-4-19.7-5.2-29-4.7-38.2 1.1-67.9 14.6-75.8 3-1.8 6.9-2.6 11.5-2.6V78.5c-8.4 0-16 1.8-22.6 5.6-28.1 16.2-34.4 66.7-19.9 130.1-62.2 19.2-102.7 49.9-102.7 82.3 0 32.5 40.7 63.3 103.1 82.4-14.4 63.6-8 114.2 20.2 130.4 6.5 3.8 14.1 5.6 22.5 5.6 27.5 0 63.5-19.6 99.9-53.6 36.4 33.8 72.4 53.2 99.9 53.2 8.4 0 16-1.8 22.6-5.6 28.1-16.2 34.4-66.7 19.9-130.1 62-19.1 102.5-49.9 102.5-82.3zm-130.2-66.7c-3.7 12.9-8.3 26.2-13.5 39.5-4.1-8-8.4-16-13.1-24-4.6-8-9.5-15.8-14.4-23.4 14.2 2.1 27.9 4.7 41 7.9zm-45.8 106.5c-7.8 13.5-15.8 26.3-24.1 38.2-14.9 1.3-30 2-45.2 2-15.1 0-30.2-.7-45-1.9-8.3-11.9-16.4-24.6-24.2-38-7.6-13.1-14.5-26.4-20.8-39.8 6.2-13.4 13.2-26.8 20.7-39.9 7.8-13.5 15.8-26.3 24.1-38.2 14.9-1.3 30-2 45.2-2 15.1 0 30.2.7 45 1.9 8.3 11.9 16.4 24.6 24.2 38 7.6 13.1 14.5 26.4 20.8 39.8-6.3 13.4-13.2 26.8-20.7 39.9zm32.3-13c5.4 13.4 10 26.8 13.8 39.8-13.1 3.2-26.9 5.9-41.2 8 4.9-7.7 9.8-15.6 14.4-23.7 4.6-8 8.9-16.1 13-24.1zM421.2 430c-9.3-9.6-18.6-20.3-27.8-32 9 .4 18.2.7 27.5.7 9.4 0 18.7-.2 27.8-.7-9 11.7-18.3 22.4-27.5 32zm-74.4-58.9c-14.2-2.1-27.9-4.7-41-7.9 3.7-12.9 8.3-26.2 13.5-39.5 4.1 8 8.4 16 13.1 24 4.7 8 9.5 15.8 14.4 23.4zM420.7 163c9.3 9.6 18.6 20.3 27.8 32-9-.4-18.2-.7-27.5-.7-9.4 0-18.7.2-27.8.7 9-11.7 18.3-22.4 27.5-32zm-74 58.9c-4.9 7.7-9.8 15.6-14.4 23.7-4.6 8-8.9 16-13 24-5.4-13.4-10-26.8-13.8-39.8 13.1-3.1 26.9-5.8 41.2-7.9zm-90.5 125.2c-35.4-15.1-58.3-34.9-58.3-50.6 0-15.7 22.9-35.6 58.3-50.6 8.6-3.7 18-7 27.7-10.1 5.7 19.6 13.2 40 22.5 60.9-9.2 20.8-16.6 41.1-22.2 60.6-9.9-3.1-19.3-6.5-28-10.2zM310 490c-13.6-7.8-19.5-37.5-14.9-75.7 1.1-9.4 2.9-19.3 5.1-29.4 19.6 4.8 41 8.5 63.5 10.9 13.5 18.5 27.5 35.3 41.6 50-32.6 30.3-63.2 46.9-84 46.9-4.5-.1-8.3-1-11.3-2.7zm237.2-76.2c4.7 38.2-1.1 67.9-14.6 75.8-3 1.8-6.9 2.6-11.5 2.6-20.7 0-51.4-16.5-84-46.6 14-14.7 28-31.4 41.3-49.9 22.6-2.4 44-6.1 63.6-11 2.3 10.1 4.1 19.8 5.2 29.1zm38.5-66.7c-8.6 3.7-18 7-27.7 10.1-5.7-19.6-13.2-40-22.5-60.9 9.2-20.8 16.6-41.1 22.2-60.6 9.9 3.1 19.3 6.5 28.1 10.2 35.4 15.1 58.3 34.9 58.3 50.6-.1 15.7-23 35.6-58.4 50.6zM320.8 78.4z"/><circle cx="420.9" cy="296.5" r="45.7"/><path d="M520.5 78.1z"/></g></svg>
+```
+
+### src/App.js
+
+```
+// App.js
+import './App.css';
+import { Route, Routes, NavLink, useLocation } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Home } from './components/home';
+import { AboutMe } from './components/aboutme';
+import { Researches } from './components/researches';
+import { Achievements } from './components/achievements';
+import { Links } from './components/links';
+import { ContactMe } from './components/contactme';
+import { NewsItem } from './components/NewsItem';
+import { NewsList } from './components/NewsList';
+import { useState } from 'react';
+
+// ページ遷移にフェードイン・アウトのアニメーションを適用
+const routes = [
+  { path: '/', name: 'Home', Component: Home },
+  { path: '/aboutme', name: 'About Me', Component: AboutMe },
+  { path: '/researches', name: 'Research', Component: Researches },
+  { path: '/achievements', name: 'Achievements', Component: Achievements },
+  { path: '/links', name: 'Links', Component: Links },
+  { path: '/contactme', name: 'Contact Me', Component: ContactMe },
+  { path: '/news/:id', name: 'News Item', Component: NewsItem },
+  { path: '/news', name: 'News List', Component: NewsList },
+];
+
+
+
+function App() {
+  let location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleHamburgerClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className='header_title'><NavLink exact to="/" className="header_link_title">Dai Nakai</NavLink></h1>
+          <nav className={`header_nav ${isOpen ? 'open' : ''}`}>
+            <ul className='header_menu'>
+              {routes.slice(1,6).map(route => (
+                <li key={route.path}>
+                  <NavLink
+                    to={route.path}
+                    className="header_link"
+                    activeClassName="header_active_link"
+                  >
+                    {route.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className={`hamburger_menu ${isOpen ? 'change' : ''}`} onClick={handleHamburgerClick}>
+            <div className="hamburger_menu_line"></div>
+            <div className="hamburger_menu_line"></div>
+            <div className="hamburger_menu_line"></div>
+          </div>
+        </header>
+
+        <div className="App-body">
+          <TransitionGroup>
+            <CSSTransition
+              key={location.key}
+              timeout={{ enter: 300, exit: 300 }}
+              classNames="fade"
+            >
+              <Routes location={location}>
+                {routes.map(({ path, Component }) => (
+                  <Route key={path} path={path} element={<Component />} />
+                ))}
+              </Routes>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+      </div>
+  );
+}
+
+export default App;
+```
+
