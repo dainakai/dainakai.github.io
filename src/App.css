@@ -55,7 +55,6 @@
 }
 
 .App-body {
-  padding: 40px;
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 200px);
@@ -197,5 +196,15 @@
 
   .mobile_menu {
     display: block;
+  }
+
+  .App-body {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  .App-body {
+    padding: 40px;
   }
 }
