@@ -1,9 +1,21 @@
 // data/newsData.js
 export const newsData = [
     {
+      id: '0007',
+      date: '2024-03-25',
+      title: '京都工芸繊維大学大学院工芸科学研究科機械設計学専攻博士前期課程を修了しました。',
+      contentFile: 'news0007.md',
+    },
+    {
+      id: '0006',
+      date: '2024-03-15',
+      title: '5th International Workshop (hybrid) on Cloud Turbulenceに参加しました。',
+      contentFile: 'news0006.md',
+    },
+    {
       id: '0005',
       date: '2023-12-14',
-      title: '高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました',
+      title: '高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました。',
       contentFile: 'news0005.md',
     },
     {

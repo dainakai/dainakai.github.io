@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { newsData } from '../data/newsData';
 import { Grid } from '@mui/material';
+import './styles/NewsList.css';
 
 export const Home = () => {
-  let recentNews = newsData.slice(0, 6);
+  let recentNews = newsData.slice(0, 5);
   return (
     <div className="home">
       <Typography variant="h4" gutterBottom>Welcome!</Typography>
@@ -21,20 +22,16 @@ export const Home = () => {
         {/* {recentNews.map((item, index) => (
           <NewsItemBox key={index} newsItem={item} />
         ))} */}
-              <Grid container spacing={3} className="news-list-contents">
-        {recentNews.map(item => (
-          <Grid item xs={12} key='' component={Link} to={`/news/${item.id}`} className='news-list-item' sx={{m:1}}>
-            {/* <div className="news-list-item"> */}
-              <Typography variant="h6" >
-                {item.title}
-              </Typography>
+        <div className="news-list-contents">
+          {recentNews.map(item => (
+            <Link key={item.id} to={`/news/${item.id}`} className="news-list-item">
+              <Typography variant="h6">{item.title}</Typography>
               <Typography variant="subtitle2" color="textSecondary">
                 {item.date}
               </Typography>
-            {/* </div> */}
-          </Grid>
-        ))}
-      </Grid>
+            </Link>
+          ))}
+        </div>
         <div className="view_all" style={{ textAlign: 'center' }}>
           <Button component={Link} to="/news" variant="text">
             View all

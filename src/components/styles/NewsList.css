@@ -1,13 +1,13 @@
 /* components/styles/NewsList.css */
+.news-list-container h2 {
+  margin-bottom: 10px;
+}
+
 .news-list-contents {
-  padding: 30px 12px;
+  padding: 0px 12px 12px 12px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.news-list-container h2 {
-  margin-bottom: 10px;
 }
 
 .news-list-item {
@@ -17,6 +17,8 @@
   transition: background-color 0.3s;
   color: #333;
   text-decoration: none;
+  margin: 10px;
+  width: calc(90% - 20px);
 }
 
 .news-list-item:hover {

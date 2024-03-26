@@ -27,6 +27,7 @@
 
 .header_title {
   margin: 0;
+  display: flex;
 }
 
 .header_menu {
@@ -64,7 +65,7 @@
 }
 
 .App-body.open {
-  transform: translateY(200px);
+  transform: translateY(100px);
 }
 
 .App-footer {
@@ -114,13 +115,16 @@
   display: none;
   cursor: pointer;
   z-index: 1000;
+  position: absolute;
+  margin-right: 20px;
+  margin-top: 13px;
 }
 
 .hamburger_menu_line {
   width: 30px;
   height: 3px;
   background-color: white;
-  margin: 6px 0;
+  margin: 6px 10px;
   transition: 0.4s;
 }
 
@@ -150,7 +154,7 @@
 }
 
 .mobile_menu.open {
-  transform: translateY(0);
+  transform: translateY(13px);
 }
 
 .mobile_menu ul {

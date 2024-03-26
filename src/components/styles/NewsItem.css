@@ -2,3 +2,9 @@
     padding: 20px;
     margin-bottom: 20px;
   }
+
+.news-item-container img {
+    width: min(90%, 400px);
+    height: auto;
+  }
+

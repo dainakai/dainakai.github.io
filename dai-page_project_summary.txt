@@ -3,6 +3,7 @@
 ## Directory Structure
 
 - dai-page/
+  - docs/
   - public/
     - favicon.ico (binary file)
     - index.html
@@ -20,6 +21,8 @@
     - manifest.json
     - robots.txt
     - logo192.png (binary file)
+  - scripts/
+    - updateDate.js
   - src/
     - reportWebVitals.js
     - App.css
@@ -309,6 +312,20 @@ Disallow:
 
 ```
 
+### scripts/updateDate.js
+
+```
+const fs = require('fs');
+
+const date = new Date();
+const formattedDate = `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`; // YYYY/MM/DD形式
+
+const content = `export const LAST_UPDATE = '${formattedDate}';`;
+
+fs.writeFileSync('src/lastUpdate.js', content);
+
+```
+
 ### src/reportWebVitals.js
 
 ```
@@ -348,6 +365,7 @@ export default reportWebVitals;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .header_link_title {
@@ -359,6 +377,7 @@ export default reportWebVitals;
 
 .header_title {
   margin: 0;
+  display: flex;
 }
 
 .header_menu {
@@ -392,12 +411,17 @@ export default reportWebVitals;
   min-height: calc(100vh - 200px);
   max-width: 95%;
   margin: 0 auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.App-body.open {
+  transform: translateY(200px);
 }
 
 .App-footer {
   text-align: center;
   padding: 20px;
-  background-color: #1f1f1f; 
+  background-color: #1f1f1f;
   color: white;
 }
 
@@ -430,7 +454,7 @@ export default reportWebVitals;
   left: 0;
   width: 100%;
 }
-  
+
 .fade-exit.fade-exit-active {
   opacity: 0;
   transition: opacity 300ms ease-in;
@@ -439,6 +463,69 @@ export default reportWebVitals;
 /* ハンバーガーメニュー */
 .hamburger_menu {
   display: none;
+  cursor: pointer;
+  z-index: 1000;
+  position: absolute;
+  margin-right: 20px;
+  margin-top: 13px;
+}
+
+.hamburger_menu_line {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 10px;
+  transition: 0.4s;
+}
+
+.hamburger_menu.open .hamburger_menu_line:nth-child(1) {
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.hamburger_menu.open .hamburger_menu_line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger_menu.open .hamburger_menu_line:nth-child(3) {
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.mobile_menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+}
+
+.mobile_menu.open {
+  transform: translateY(13px);
+}
+
+.mobile_menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile_menu li {
+  margin-bottom: 10px;
+}
+
+.mobile_menu a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.mobile_menu a:hover {
+  color: white;
 }
 
 @media (max-width: 600px) {
@@ -449,13 +536,6 @@ export default reportWebVitals;
 
   .header_menu {
     display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .header_menu li {
-    margin-bottom: 10px;
   }
 
   .hamburger_menu {
@@ -463,32 +543,10 @@ export default reportWebVitals;
     position: absolute;
     right: 20px;
     top: 20px;
-    cursor: pointer;
-    z-index: 1000;
   }
 
-  .hamburger_menu_line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 6px 0;
-    transition: 0.4s;
-  }
-
-  .change .hamburger_menu_line:nth-child(1) {
-    transform: rotate(-45deg) translate(-9px, 6px);
-  }
-
-  .change .hamburger_menu_line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .change .hamburger_menu_line:nth-child(3) {
-    transform: rotate(45deg) translate(-8px, -8px);
-  }
-
-  .header_menu.open {
-    display: flex;
+  .mobile_menu {
+    display: block;
   }
 }
 ```
@@ -899,7 +957,7 @@ test('renders learn react link', () => {
 ### src/lastUpdate.js
 
 ```
-export const LAST_UPDATE = '2024/01/18';
+export const LAST_UPDATE = '2024/03/25';
 ```
 
 ### src/setupTests.js
@@ -973,6 +1031,7 @@ import { ContactMe } from './components/contactme';
 import { NewsItem } from './components/NewsItem';
 import { NewsList } from './components/NewsList';
 import { useState } from 'react';
+import { LAST_UPDATE } from './lastUpdate';
 
 // ページ遷移にフェードイン・アウトのアニメーションを適用
 const routes = [
@@ -986,8 +1045,6 @@ const routes = [
   { path: '/news', name: 'News List', Component: NewsList },
 ];
 
-
-
 function App() {
   let location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -997,47 +1054,68 @@ function App() {
   };
 
   return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className='header_title'><NavLink exact to="/" className="header_link_title">Dai Nakai</NavLink></h1>
-          <nav className={`header_nav ${isOpen ? 'open' : ''}`}>
-            <ul className='header_menu'>
-              {routes.slice(1,6).map(route => (
-                <li key={route.path}>
-                  <NavLink
-                    to={route.path}
-                    className="header_link"
-                    activeClassName="header_active_link"
-                  >
-                    {route.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className={`hamburger_menu ${isOpen ? 'change' : ''}`} onClick={handleHamburgerClick}>
-            <div className="hamburger_menu_line"></div>
-            <div className="hamburger_menu_line"></div>
-            <div className="hamburger_menu_line"></div>
-          </div>
-        </header>
-
-        <div className="App-body">
-          <TransitionGroup>
-            <CSSTransition
-              key={location.key}
-              timeout={{ enter: 300, exit: 300 }}
-              classNames="fade"
-            >
-              <Routes location={location}>
-                {routes.map(({ path, Component }) => (
-                  <Route key={path} path={path} element={<Component />} />
-                ))}
-              </Routes>
-            </CSSTransition>
-          </TransitionGroup>
+    <div className="App">
+      <header className="App-header">
+        <h1 className='header_title'><NavLink exact to="/" className="header_link_title" onClick={() => setIsOpen(false)}>Dai Nakai</NavLink></h1>
+        <nav className="header_nav">
+          <ul className='header_menu'>
+            {routes.slice(1, 6).map(route => (
+              <li key={route.path}>
+                <NavLink
+                  to={route.path}
+                  className="header_link"
+                  activeClassName="header_active_link"
+                >
+                  {route.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className={`hamburger_menu ${isOpen ? 'open' : ''}`} onClick={handleHamburgerClick}>
+          <div className="hamburger_menu_line"></div>
+          <div className="hamburger_menu_line"></div>
+          <div className="hamburger_menu_line"></div>
         </div>
+      </header>
+
+      <nav className={`mobile_menu ${isOpen ? 'open' : ''}`}>
+        <ul>
+          {routes.slice(1, 6).map(route => (
+            <li key={route.path}>
+              <NavLink
+                to={route.path}
+                className="header_link"
+                activeClassName="header_active_link"
+                onClick={() => setIsOpen(false)}
+              >
+                {route.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className={`App-body ${isOpen ? 'open' : ''}`}>
+        <TransitionGroup>
+          <CSSTransition
+            key={location.key}
+            timeout={{ enter: 300, exit: 300 }}
+            classNames="fade"
+          >
+            <Routes location={location}>
+              {routes.map(({ path, Component }) => (
+                <Route key={path} path={path} element={<Component />} />
+              ))}
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
+        <footer className="App-footer">
+          <p className='footer_text'>Latest update: {LAST_UPDATE}
+           © 2024 Dai Nakai</p>
+        </footer>
+    </div>
   );
 }
 
