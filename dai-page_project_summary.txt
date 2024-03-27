@@ -16,8 +16,14 @@
       - news0001.md
       - news0005.md
       - news0004.md
+      - news0007.md
       - news0003.md
       - news0002.md
+      - news0006.md
+      - news0006/
+        - IMG_3908.jpeg (binary file)
+        - IMG_3904.jpeg (binary file)
+        - IMG_3905.jpeg (binary file)
     - manifest.json
     - robots.txt
     - logo192.png (binary file)
@@ -85,6 +91,21 @@
     <meta name="google-site-verification" content="jWI5D8CFapV27ez5HYpfo2-Hiv9tifa-3CLtBjBK54E" />
     <script type="text/javascript" async
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <script>
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -242,6 +263,25 @@ https://sites.google.com/view/jchsip2023/
 https://doi.org/10.11395/aem.8.0_33
 ```
 
+### public/newsItems/news0007.md
+
+```
+<!-- news0007.md -->
+<!-- 京都工芸繊維大学大学院工芸科学研究科機械設計学専攻博士前期課程を修了しました。 -->
+<!-- 2024-03-25 -->
+「近接した２つの微粒子のホログラム縞解析」という題で修士論文を提出し、博士前期課程を修了しました。
+
+また、修了に際し、機械学会三浦賞と京都工芸繊維大学学長表彰をいただきました。
+
+三浦賞について
+
+https://www.jsme.or.jp/event_project/award/miura-award/
+
+京都工芸繊維大学学長表彰について
+
+https://www.kit.ac.jp/uni_index/principle/recognize/student/
+```
+
 ### public/newsItems/news0003.md
 
 ```
@@ -270,6 +310,30 @@ https://jsem.jp/IWAEM23/awards.html
 詳細はこちら
     
 https://www.metsoc.jp/meetings/2023a
+```
+
+### public/newsItems/news0006.md
+
+```
+<!-- news0006.md -->
+<!-- 5th International Workshop (hybrid) on Cloud Turbulenceに参加しました。 -->
+<!-- 2024-03-15 -->
+雲乱流に関する国際ワークショップに参加しました。
+
+
+![](/newsItems/news0006/IMG_3904.jpeg)
+
+初名工大でした。広くてきれい。
+
+![](/newsItems/news0006/IMG_3905.jpeg)
+
+![](/newsItems/news0006/IMG_3908.jpeg)
+
+古墳上からの眺め。登ると留年するというジンクスがあることを知ったのは後のこと。
+
+詳細はこちら
+
+https://sites.google.com/view/cloudturb5
 ```
 
 ### public/manifest.json
@@ -405,7 +469,6 @@ export default reportWebVitals;
 }
 
 .App-body {
-  padding: 40px;
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 200px);
@@ -415,7 +478,7 @@ export default reportWebVitals;
 }
 
 .App-body.open {
-  transform: translateY(200px);
+  transform: translateY(100px);
 }
 
 .App-footer {
@@ -548,6 +611,16 @@ export default reportWebVitals;
   .mobile_menu {
     display: block;
   }
+
+  .App-body {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  .App-body {
+    padding: 40px;
+  }
 }
 ```
 
@@ -563,7 +636,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <App />
   </Router>
 );
@@ -674,7 +747,7 @@ export const ContactMe = () => {
 // components/NewsList.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { newsData } from '../data/newsData';
 import './styles/NewsList.css';
 
@@ -684,16 +757,16 @@ export const NewsList = () => {
       <Typography variant="h4" component="h2" gutterBottom>
         News List
       </Typography>
-      <Grid container spacing={3} className="news-list-contents">
+      <div className="news-list-contents">
         {newsData.map(item => (
-          <Grid item xs={12} key={item.id} component={Link} to={`/news/${item.id}`} className="news-list-item" sx={{m:1}}>
+          <Link key={item.id} to={`/news/${item.id}`} className="news-list-item">
             <Typography variant="h6">{item.title}</Typography>
             <Typography variant="subtitle2" color="textSecondary">
               {item.date}
             </Typography>
-          </Grid>
+          </Link>
         ))}
-      </Grid>
+      </div>
     </div>
   );
 };
@@ -708,9 +781,10 @@ import { Link } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { newsData } from '../data/newsData';
 import { Grid } from '@mui/material';
+import './styles/NewsList.css';
 
 export const Home = () => {
-  let recentNews = newsData.slice(0, 6);
+  let recentNews = newsData.slice(0, 5);
   return (
     <div className="home">
       <Typography variant="h4" gutterBottom>Welcome!</Typography>
@@ -725,20 +799,16 @@ export const Home = () => {
         {/* {recentNews.map((item, index) => (
           <NewsItemBox key={index} newsItem={item} />
         ))} */}
-              <Grid container spacing={3} className="news-list-contents">
-        {recentNews.map(item => (
-          <Grid item xs={12} key='' component={Link} to={`/news/${item.id}`} className='news-list-item' sx={{m:1}}>
-            {/* <div className="news-list-item"> */}
-              <Typography variant="h6" >
-                {item.title}
-              </Typography>
+        <div className="news-list-contents">
+          {recentNews.map(item => (
+            <Link key={item.id} to={`/news/${item.id}`} className="news-list-item">
+              <Typography variant="h6">{item.title}</Typography>
               <Typography variant="subtitle2" color="textSecondary">
                 {item.date}
               </Typography>
-            {/* </div> */}
-          </Grid>
-        ))}
-      </Grid>
+            </Link>
+          ))}
+        </div>
         <div className="view_all" style={{ textAlign: 'center' }}>
           <Button component={Link} to="/news" variant="text">
             View all
@@ -755,15 +825,15 @@ export const Home = () => {
 
 ```
 /* components/styles/NewsList.css */
+.news-list-container h2 {
+  margin-bottom: 10px;
+}
+
 .news-list-contents {
-  padding: 30px 12px;
+  padding: 0px 12px 12px 12px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.news-list-container h2 {
-  margin-bottom: 10px;
 }
 
 .news-list-item {
@@ -773,6 +843,8 @@ export const Home = () => {
   transition: background-color 0.3s;
   color: #333;
   text-decoration: none;
+  margin: 10px;
+  width: calc(90% - 20px);
 }
 
 .news-list-item:hover {
@@ -812,6 +884,19 @@ ul {
 .news-item-container {
     padding: 20px;
     margin-bottom: 20px;
+  }
+
+.news-item-container img {
+    width: min(90%, 400px);
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    .news-item-container {
+      /* center it */
+      width: auto;
+      
+    }
   }
 ```
 
@@ -892,6 +977,7 @@ import { newsData } from '../data/newsData';
 import './styles/NewsItem.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 export const NewsItem = ({ newsItem }) => {
   const { id } = useParams();
@@ -922,6 +1008,7 @@ export const NewsItem = ({ newsItem }) => {
       </Typography>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         skipHtml={true}
         components={{
           a: ({ node, ...props }) => (
@@ -957,7 +1044,7 @@ test('renders learn react link', () => {
 ### src/lastUpdate.js
 
 ```
-export const LAST_UPDATE = '2024/03/25';
+export const LAST_UPDATE = '2024/03/26';
 ```
 
 ### src/setupTests.js
@@ -977,9 +1064,21 @@ import '@testing-library/jest-dom';
 // data/newsData.js
 export const newsData = [
     {
+      id: '0007',
+      date: '2024-03-25',
+      title: '京都工芸繊維大学大学院工芸科学研究科機械設計学専攻博士前期課程を修了しました。',
+      contentFile: 'news0007.md',
+    },
+    {
+      id: '0006',
+      date: '2024-03-15',
+      title: '5th International Workshop (hybrid) on Cloud Turbulenceに参加しました。',
+      contentFile: 'news0006.md',
+    },
+    {
       id: '0005',
       date: '2023-12-14',
-      title: '高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました',
+      title: '高速度イメージングとフォトニクスに関する総合シンポジウム2023(JCHSIP2023)@近畿大学に参加しました。',
       contentFile: 'news0005.md',
     },
     {
