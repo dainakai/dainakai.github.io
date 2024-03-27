@@ -6,7 +6,7 @@ export const ContactMe = () => {
             {/* ./home/topimage_2023_0614.jpg をページサイズの90%で表示。画像下部にコメント */}
             <figure className="contactmeimg">
                 <img src="/img/home/topimage_2023_0614.jpg" alt="topimage" width="90%" />
-                <figcaption className="figcap">先日の台風3号一過の翌日の鴨川です。</figcaption>
+                <figcaption className="figcap">Lovely scenery of the Kamo River in Kyoto</figcaption>
             </figure>
         </div>
     );

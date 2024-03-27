@@ -10,7 +10,7 @@ export const AboutMe = () => {
                 <li>2018年4月 京都工芸繊維大学 機械工学課程 入学</li>
                 <li>2022年3月 京都工芸繊維大学 機械工学課程 卒業</li>
                 <li>2022年4月 京都工芸繊維大学 機械設計学専攻 入学</li>
-                <li>2024年3月 京都工芸繊維大学 機械設計学専攻 修了予定</li>
+                <li>2024年3月 京都工芸繊維大学 機械設計学専攻 修了</li>
             </ur>
         </p>
         <h3 className='aboutme_title'>Academic Memberships</h3>
